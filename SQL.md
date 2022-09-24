@@ -85,3 +85,88 @@ SELECT name,e.age from user e where e.age > 19 order by e.age;
 # DCL
 
 select getdate();
+Show databases;
+USE prac02;
+select database();
+show tables;
+create table HR(
+    id int comment 'id',
+  name varchar(50) comment 'name',
+  age int comment 'age',
+  gender varchar(1) comment 'gender'
+
+) comment 'HR table';
+
+desc hr;
+# describe HR table
+SHOW CREATE TABLE HR;
+
+INSERT INTO HR(id, name, age, gender) VALUES
+                                        (01,'Amy',20,'F'),
+                                        (02,'Bob',23,'M'),
+                                        (03,'Kate',19,'F'),
+                                        (04,'David',21,'M');
+
+SELECT * from HR;
+
+create table Finance(
+    id int comment 'id',
+  name varchar(50) comment 'name',
+  age int comment 'age',
+  gender varchar(1) comment 'gender'
+                    ) comment 'Finance table';
+
+INSERT INTO Finance(id, name, age, gender) VALUES
+                                        (01,'CEO',30,'M'),
+                                        (02,'Amy',20,'F'),
+                                        (03,'CFO',19,'F'),
+                                        (04,'CTO',21,'M');
+
+UPDATE Finance SET id = 00 where name = 'CEO';
+Update Finance set name = 'CCO' where id = 02;
+
+# 内连接
+# 隐式内连接
+SELECT * from HR, Finance where HR.id = Finance.id;
+# 显式内连接
+SELECT * from HR inner join Finance F on HR.age = F.age order by hr.age;
+
+# 外连接
+# 左外连接
+select F.*,H.* from Finance F left outer join HR H on F.name = H.name;
+# 右外连接
+select F.*,H.* from Finance F right outer join HR H on F.age = H.age;
+
+#自连接
+SELECT a.name,b.name from Finance a, Finance b where a.age = b.age;
+
+# union, union all
+SELECT name from HR H
+union
+select name from Finance F;
+
+SELECT age from HR H where h.age > 20
+UNION ALL
+Select id from Finance F where F.id = 00;
+
+select * from HR where id = 01 or name is not null
+union
+select * from Finance;
+
+#子查询
+
+# 标量子查询
+# including = <> > >= etc.
+
+
+# substring
+# distinct
+select distinct * from HR
+where substr(gender,1,1) is not null;
+
+# Cast converting data types
+select id
+from prac02.hr h
+order by id desc
+;
+
