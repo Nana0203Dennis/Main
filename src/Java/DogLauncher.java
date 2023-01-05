@@ -1,7 +1,7 @@
+package Java;
 public class DogLauncher{
     public static void main(String[] args) {
-        Dog d = new Dog();
-        d.weight = 25;
+        Dog d = new Dog(51);
         d.makeNoise();
     }
 }

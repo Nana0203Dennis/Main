@@ -1,4 +1,4 @@
-package Java_DS;
+package Java;
 
 public class Helloworld {
     
