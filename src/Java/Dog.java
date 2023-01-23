@@ -1,4 +1,5 @@
 package Java;
+
 public class Dog {
     public int weight;
         // instance variable, you can have as many of these as you want.
