@@ -2,9 +2,13 @@ package Java;
 
 public class Dog {
     public int weight;
-        // instance variable, you can have as many of these as you want.
+    // instance variable, you can have as many of these as you want.
 
-    public Dog(int w){
+    public static String binomen = "Canis Famailiris";
+    // whenever you have a static variable, just use the class name.
+    // Dog.binomen
+
+    public Dog(int w) {
         // integer constructor ( this is similar to a mehod, but not a method.)
         // This determines how to instantiate the class.
         weight = w;
@@ -23,5 +27,18 @@ public class Dog {
         }
         
         
+    }
+
+    public static Dog maxDog(Dog d1, Dog d2){
+        if (d1.weight > d2.weight){
+            return d1;
+        } return d2;
+        
+    }
+
+    public Dog maxDog(Dog d2){
+        if (weight > d2.weight){
+            return this;
+        } return d2;
     }
 }
